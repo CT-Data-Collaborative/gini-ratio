@@ -1,0 +1,208 @@
+{
+  "name": "gini-ratio",
+  "datapackage_version": "1.0-beta.18",
+  "title": "Gini Ratio",
+  "description": "The Gini Ratio (or index of income concentration) is a statistical measure of income equality ranging from 0 to 1.",
+  "version": "1.0",
+  "licenses": [{
+    "url": "http://opendatacommons.org/licenses/pddl/",
+    "name": "Open Data Commons Public Domain",
+    "version": "1.0",
+    "id": "odc-pddl"
+  }],
+  "sources": [{
+    "name": "uscensus",
+    "web": ""
+  }],
+  "author":[{
+    "name": "Jenna Daly",
+    "email": "jdaly@ctdata.org",
+    "web": "http://ctdata.org"
+  }],
+  "contributor": [],
+  "resources": [{
+    "path": "data/gini-ratio_2015.csv",
+    "format": "csv",
+    "schema": {
+      "fields": [{
+          "name": "Town",
+          "type": "string",
+          "dimension": false
+        }, {
+          "name": "FIPS",
+          "type": "string",
+          "dimension": false
+        }, {
+          "name": "Year",
+          "type": "string",
+          "dimension": false
+        }, {
+          "name": "Measure Type",
+          "type": "string",
+          "dimension": true,
+          "constraints": {
+            "enum": [
+              "Number"
+            ]
+         }
+        }, {
+          "name": "Variable",
+          "type": "string",
+          "dimension": true,
+          "constraints": {
+            "enum": [
+              "Gini Ratio", 
+              "Margins of Error"
+            ]
+         }
+        }, {
+          "name": "Value",
+          "type": "number",
+          "dimension": false
+        }]
+      }
+    }
+  ],
+  "last_modified": "09/19/2017",
+  "ckan_extras": {
+    "full_description": {
+      "ckan_name": "Full Description",
+      "value": "A measure of 1 indicates perfect inequality; i.e., one person has all the income and rest have none. A measure of 0 indicates perfect equality; i.e., all people have equal shares of income. Gini Index is reported in table B19083 in the Census American Community Survey.",
+      "type": "string"
+    },
+    "suppression": {
+      "ckan_name": "Suppression",
+      "value": "",
+      "type": "string"
+    },
+    "technical_notes": {
+      "ckan_name": "Technical Notes",
+      "value": "",
+      "type": "string"
+    },
+    "socrata": {
+      "ckan_name": "Socrata",
+      "value": "False",
+      "type": "string"
+    },
+    "socrata_url": {
+      "ckan_name": "Socrata Dataset URL",
+      "value": "",
+      "type": "string"
+    },
+    "socrata_dataset_name": {
+      "ckan_name": "Socrata Dataset Name",
+      "value": "",
+      "type": "string"
+    }, 
+    "domain": {
+      "ckan_name": "Domain",
+      "value": "Economy",
+      "type": "string"
+    },
+    "subdomain": {
+      "ckan_name": "Subdomain",
+      "value": "Income",
+      "type": "string"
+    },
+    "geography": {
+      "ckan_name": "Geography",
+      "value": "Town",
+      "type": "string",
+      "constraints": {"enum": ["Town", "County", "Town/County", "District", "Other"]}
+    },
+    "frequency": {
+      "ckan_name": "Frequency",
+      "value": "Other",
+      "type": "string"
+    },
+    "years_in_catalog": {
+      "ckan_name": "Years in Catalog",
+      "value": ["2006-2010", "2007-2011", "2008-2012", "2009-2013", "2010-2014", "2011-2015"],
+      "type": "array"
+    },
+    "latest_year": {
+      "ckan_name": "Latest Year Available",
+      "value": "2011-2015",
+      "type": "string"
+    },
+    "disabled_views": {
+      "ckan_name": "Disabled Views",
+      "value": [],
+      "type": "array",
+      "constraints": {"enum": ["map", "table", "bar", "line"]}
+    },
+    "units": {
+      "ckan_name": "Units",
+      "value": {
+        "Number": "",
+        "Percent": "%"
+      }
+    },
+    "expected_number_of_geographies": {
+		  "ckan_name": "Expected Number of Unique Geographies",
+		  "value": 170,
+		  "type": "string"
+		},     
+    "default": {      
+      "ckan_name": "Default",
+			"value": {
+		 		"Town": "Connecticut",
+		 		"Year": "2011-2015",
+		 		"Measure Type": "Number", 
+		 		"Variable": "Gini Ratio"
+			},
+		  	"type": "object"
+    } 
+  },
+  "spot_checks": [
+    {
+      "type": "$lookup",
+      "filter": {
+        "Town": "Connecticut",
+        "Year":	"2006-2010",
+        "Variable":	"Gini Ratio",
+        "Measure Type":	"Number"
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "float",
+        "value": 0.482
+      } 
+    }, 
+    {
+      "type": "$lookup",
+      "filter": {
+        "Town": "Hartford",
+        "Year":	"2008-2012",
+        "Variable":	"Margins of Error",
+        "Measure Type":	"Number"
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "float",
+        "value": 0.0113
+      } 
+    }, 
+    {
+      "type": "$lookup",
+      "filter": {
+        "Town": "Bethel",
+        "Year":	"2011-2015",
+        "Variable":	"Gini Ratio",
+        "Measure Type":	"Number"
+      },
+      "expected": {
+        "type": "$match",
+        "number type": "float",
+        "value": 0.4196
+      } 
+    }    
+  ],
+  "dimension_groups": [
+    {
+      "Measure Type": ["Number"],
+      "Variable": ["Gini Ratio", "Margins of Error"]
+    }
+  ]
+}
