@@ -49,7 +49,7 @@ GR_df_fips_long <- GR_df_fips_long %>%
 # Write to File
 write.table(
   GR_df_fips_long,
-  file.path(getwd(), "data", "gini-ratio_2015.csv"),
+  file.path(getwd(), "data", "gini-ratio_2016.csv"),
   sep = ",",
   row.names = F
 )
