@@ -15,13 +15,13 @@
     "web": ""
   }],
   "author":[{
-    "name": "CTData Collaborative",
+    "name": "Connecticut Data Collaborative",
     "email": "info@ctdata.org",
     "web": "http://ctdata.org"
   }],
   "contributor": [],
   "resources": [{
-    "path": "data/gini-ratio-2018.csv",
+    "path": "data/gini-ratio-2017.csv",
     "format": "csv",
     "schema": {
       "fields": [{
@@ -63,7 +63,7 @@
       }
     }
   ],
-  "last_modified": "01/24/2020",
+  "last_modified": "01/22/2019",
   "ckan_extras": {
     "full_description": {
       "ckan_name": "Full Description",
@@ -118,12 +118,12 @@
     },
     "years_in_catalog": {
       "ckan_name": "Years in Catalog",
-      "value": ["2006-2010", "2007-2011", "2008-2012", "2009-2013", "2010-2014", "2011-2015", "2012-2016", "2013-2017", "2014-2018"],
+      "value": ["2006-2010", "2007-2011", "2008-2012", "2009-2013", "2010-2014", "2011-2015", "2012-2016", "2013-2017"],
       "type": "array"
     },
     "latest_year": {
       "ckan_name": "Latest Year Available",
-      "value": "2014-2018",
+      "value": "2013-2017",
       "type": "string"
     },
     "disabled_views": {
@@ -148,7 +148,7 @@
       "ckan_name": "Default",
 			"value": {
 		 		"Town": "Connecticut",
-		 		"Year": "2014-2018",
+		 		"Year": "2013-2017",
 		 		"Measure Type": "Number",
 		 		"Variable": "Gini Ratio"
 			},
